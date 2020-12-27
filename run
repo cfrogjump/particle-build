@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ ${MODE} == "Build" ]]; then
+  echo "Building"
+  cd /input
+  /root/bin/particle login --token ${BUILD_TOKEN}
+  /root/bin/particle compile ${BUILD_ARCH} --saveTo /output/fs-lamp-photon.bin
+elif [[ ${MODE} == "Flash" ]]; then
+  echo "Flashing"
+  cd /output
+  /root/bin/particle login --token ${BUILD_TOKEN}
+  /root/bin/particle flash ${BOARD} fs-lamp-photon.bin
+fi
