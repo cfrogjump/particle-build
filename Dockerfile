@@ -18,10 +18,12 @@ RUN curl -sL https://particle.io/install-cli | bash
 
 RUN mkdir /app
 
-VOLUME ["/input", "/output"]
-
 COPY ./run /app
 
+RUN useradd -d /app -u 1000 app && chown -Rf app: /app
+
+VOLUME ["/input", "/output"]
+
+USER app
+
 CMD ["/app/run"]
-
-
