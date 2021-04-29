@@ -3,11 +3,11 @@
 if [[ ${MODE} == "BUILD" ]]; then
   echo "Building"
   cd /input
-  /root/bin/particle login --token ${PARTICLE_TOKEN}
-  /root/bin/particle compile ${BUILD_ARCH} --saveTo /output/fs-lamp-photon.bin
+  /app/bin/particle login --token ${PARTICLE_TOKEN}
+  /app/bin/particle compile ${BUILD_ARCH} --saveTo /output/fs-lamp-photon.bin
 elif [[ ${MODE} == "FLASH" ]]; then
   echo "Flashing"
   cd /output
-  /root/bin/particle login --token ${PARTICLE_TOKEN}
-  /root/bin/particle flash ${BOARD} fs-lamp-photon.bin
+  /app/bin/particle login --token ${PARTICLE_TOKEN}
+  /app/bin/particle flash ${BOARD} fs-lamp-photon.bin
 fi
